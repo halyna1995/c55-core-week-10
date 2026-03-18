@@ -152,6 +152,7 @@ describe('Complete CRUD Operations', () => {
     fetchMock.mockResolvedValueOnce({
       ok: true,
       status: 200,
+      json: async () => ({ id: 1, text: 'Updated post text!', message: 'Post deleted' }),
     });
 
     // DELETE: Remove the post
@@ -170,12 +171,13 @@ describe('Complete CRUD Operations', () => {
     fetchMock.mockResolvedValueOnce({
       ok: true,
       status: 200,
+      json: async () => ({ user: 'Alice', message: 'User deleted' }),
     });
 
     // DELETE: Remove the user
     await deleteUser();
     expect(fetchMock).toHaveBeenLastCalledWith(
-      'http://localhost:3000/users/me',
+      'https://postcentral.hyf.dev/users/me',
       expect.objectContaining({
         method: 'DELETE',
         headers: expect.objectContaining({
@@ -218,6 +220,7 @@ describe('Complete CRUD Operations', () => {
     fetchMock.mockResolvedValueOnce({
       ok: true,
       status: 200,
+      json: async () => ({ user: 'mock-user', message: 'User deleted' }),
     });
 
     await deleteUser();
@@ -240,6 +243,7 @@ describe('Complete CRUD Operations', () => {
     fetchMock.mockResolvedValueOnce({
       ok: true,
       status: 200,
+      json: async () => ({ id: 5, text: 'some text', message: 'Post deleted' }),
     });
 
     await deletePost(5);

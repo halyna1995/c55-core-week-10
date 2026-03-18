@@ -46,7 +46,7 @@ describe('POST Functions', () => {
 
       // Verify fetch was called with correct parameters
       expect(fetchMock).toHaveBeenCalledWith(
-        'http://localhost:3000/users/register',
+        'https://postcentral.hyf.dev/users/register',
         {
           method: 'POST',
           headers: {
@@ -119,7 +119,7 @@ describe('POST Functions', () => {
 
       // Verify fetch was called with correct parameters
       expect(fetchMock).toHaveBeenCalledWith(
-        'http://localhost:3000/users/login',
+        'https://postcentral.hyf.dev/users/login',
         {
           method: 'POST',
           headers: {
@@ -174,7 +174,7 @@ describe('POST Functions', () => {
       await createPost(postText);
 
       // Verify fetch was called with correct parameters including auth header
-      expect(fetchMock).toHaveBeenCalledWith('http://localhost:3000/posts', {
+      expect(fetchMock).toHaveBeenCalledWith('https://postcentral.hyf.dev/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
